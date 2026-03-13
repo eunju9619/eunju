@@ -1,0 +1,265 @@
+@charset "utf-8";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor:
+    url("../images/mouse\ cusor1.png") 2 2,
+    auto;
+}
+*:active {
+  cursor:
+    url("../images/mouse\ cusor\ 2.png") 2 2,
+    auto;
+}
+
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #fff;
+}
+body {
+  background-color: #8e6032;
+}
+
+@font-face {
+  font-family: "Cafe24MeongiWhite";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Meongi-W-v1.0.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OngleipParkDahyeon";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2411-3@1.0/Ownglyph_ParkDaHyun.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cafe24MeongiBlack";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Meongi-B-v1.0.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "InkLiquid";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff")
+    format("woff");
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IsYun";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff")
+    format("woff");
+  font-weight: normal;
+  font-display: swap;
+}
+
+/* header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  align-items: center;
+  height: 100px;
+  background-color: #663d14;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+header ul {
+  display: flex;
+  gap: 100px;
+  font-family: "Cafe24MeongiWhite";
+  font-size: 1.5rem;
+}
+
+.logo {
+}
+
+.logo img {
+  width: 200px;
+}
+
+/* main */
+
+.name {
+  margin-top: 350px;
+  position: relative;
+  text-align: center;
+  font-size: 6rem;
+  font-family: "Cafe24MeongiWhite";
+  color: #eee;
+}
+.name .btn {
+  background: none;
+  outline: none;
+  border: none;
+  font-size: 5rem;
+  font-family: "Cafe24MeongiWhite";
+  color: antiquewhite;
+}
+
+.name .btn:hover {
+  font-family: "Cafe24MeongiBlack";
+  color: #663d14;
+}
+
+section h2 {
+  color: #fff;
+  text-align: center;
+  font-size: 3rem;
+  padding: 10px 0;
+  font-family: "Cafe24MeongiWhite";
+  margin: 10rem 0 3rem;
+}
+
+main video {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+/* about */
+
+.about .inner {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  justify-content: center;
+  gap: 40px;
+  align-items: center;
+}
+
+.about .inner .profile {
+  width: 50%;
+  height: 100%;
+}
+
+.about .text span {
+  font-family: "InkLiquid";
+}
+
+.about .pro-text {
+  font-family: "IsYun";
+}
+.about .inner .profile img {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+.images {
+  display: flex;
+  gap: 30px;
+}
+
+section h3 {
+  color: #eee;
+  line-height: 2;
+  font-size: 2rem;
+}
+
+.text {
+  max-width: 1000px;
+  color: #fff;
+  font-family: "OngleipParkDahyeon";
+  font-size: 1.5rem;
+}
+.text span {
+  font-size: 3rem;
+}
+.pro-text {
+  display: flex;
+  gap: 30px;
+  margin: 2rem 0;
+}
+/* project tab */
+.project .container {
+  width: 60%;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.project .project1 {
+  width: 48%;
+}
+.project .container iframe {
+  width: 100%;
+  max-width: 800px;
+}
+/* video */
+.iframevideo {
+  width: 80%;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+}
+
+.swiper-silde {
+  width: 100%;
+}
+.iframevideo iframe {
+  width: 80%;
+  height: 100%;
+  display: block;
+  margin: 0 auto;
+}
+.iframevideo .swiper-pagination-bullet {
+  width: 30px;
+  border-radius: 0;
+  background-color: white;
+  opacity: 1;
+}
+.iframevideo .swiper-pagination-bullet-active {
+  width: 70px;
+  background-color: black;
+}
+
+/* contact */
+.contact {
+  width: 80%;
+  margin: 0 auto;
+}
+.contact .images {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  gap: 100px;
+  font-size: 2.5rem;
+  font-family: "OngleipParkDahyeon";
+  color: bisque;
+  flex-wrap: wrap;
+}
+.contact .images img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+/* FOOTER */
+footer {
+  height: 4vh;
+  margin: 2rem auto;
+}
+
+footer p {
+  text-align: center;
+  color: #eee;
+  font-size: 1.5rem;
+  font-family: "OngleipParkDahyeon";
+  margin-bottom: 20%;
+}

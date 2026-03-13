@@ -1,0 +1,191 @@
+@charset "utf-8";
+
+@media screen and (max-width: 1600px) {
+  .profile img {
+    width: 80%;
+  }
+  .iframevideo {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 1200px) {
+  html {
+    font-size: 14px;
+  }
+  .project .container {
+    width: 80%;
+  }
+  .iframevideo {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 1000px) {
+  header ul {
+    gap: 50px;
+  }
+  .name {
+    font-size: 5rem;
+  }
+  .name .btn {
+    font-size: 4rem;
+  }
+  .about .inner {
+    flex-direction: column;
+  }
+  .project .container {
+    width: 100%;
+  }
+  .project .project1 {
+    width: 100%;
+  }
+  .project .container iframe {
+    width: 60%;
+    display: block;
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 12px;
+  }
+  .text span {
+    display: block;
+    text-align: center;
+  }
+  .iframevideo {
+    height: 50vh;
+  }
+}
+
+
+
+@media screen and (max-width: 671px) {
+  html {
+    font-size: 12px;
+  }
+  header ul{
+    gap: 20
+    px;
+    
+
+  }
+  .project .container iframe {
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+  }
+  }
+@media screen and (max-width: 660px) {
+  html {
+    font-size: 12px;
+  }
+  header ul{
+  gap : 10px
+   }
+
+  .project .container iframe {
+  width: 90%;
+  display: block;
+  margin: 0 auto;
+  }
+  }
+@media screen and (max-width: 649px) {
+  html {
+    font-size: 12px;
+  }
+  header ul{
+  gap : 10px
+}
+
+  .project .container iframe {
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+  }
+  }
+
+  @media screen and (max-width:555px) {
+    .name {
+      font-size: 4rem;
+    }
+      html {
+    font-size: 10px;
+  }
+  header ul{
+  gap : 15px
+}
+
+}
+
+@media screen and (max-width:514px) {
+  header ul{
+    font-size: 1.5rem;
+    gap: 10px;
+  }
+    .project .container iframe {
+  width: 90%;
+  display: block;
+  margin: 0 auto;
+  }
+}
+
+@media screen and (max-width:497px) {
+  header ul{
+    font-size: 1.2rem;
+  }  
+}
+@media screen and (max-width:449px) {
+  header ul{
+    font-size: 1rem;
+  }  
+      .project .container iframe {
+  width: 90%;
+  height: 20;
+  display: block;
+  margin: 0 auto;
+  }
+}
+@media screen and (max-width:398px) {
+  header ul{
+    font-size: 1rem;
+    gap: 5px;
+    display: none;
+  }  
+  .name{
+    font-size: 3.5rem;
+  }
+ .about .inner .profile .text .span{
+    font-size: 1rem;
+  }
+      .project .container iframe {
+  width: 90%;
+  height: 20;
+  display: block;
+  margin: 0 auto;
+  }
+}
+@media screen and (max-width:360px) {
+  header ul{
+    font-size: 1rem;
+    gap: 5px;
+    display: none;
+  }  
+
+  .name{
+    font-size: 3rem;
+  }
+ .about .inner .profile .text .span{
+    font-size: 1rem;
+  }
+  .project .container iframe {
+  width: 0%;
+  display: block;
+  margin: 0 auto;
+  }
+  .profile img {
+    width: 20%;
+  }
+  .iframevideo{
+    width: 50px
+  }
+}
