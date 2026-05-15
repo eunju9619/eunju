@@ -123,40 +123,52 @@
         <iframe height="400" src="https://www.youtube.com/embed/A6_t9to2NeY?si=V0QLzClPeC71wVTj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
         
-  
-    <section class="video">
-      <h2>VIDEO</h2>
+<section class="video">
+  <h2>VIDEO</h2>
 
-      <body>
-  <!-- Swiper -->
+  <!-- Swiper 컨테이너 -->
   <div class="swiper iframevideo">
     <div class="swiper-wrapper">
-      <div class="swiper-slide"><iframe width="575" height="766" src="https://www.youtube.com/embed/avBChfhBCko" title="moving poster - Victoria Swedish Egg White Facial Soap" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-      <div class="swiper-slide"> <iframe width="431" height="766" src="https://www.youtube.com/embed/kKS3HHyVhlg" title="여름아 오지마 ! 미리보는 여름 룩" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-      <div class="swiper-slide"> <iframe width="431" height="766" src="https://www.youtube.com/embed/6ELXnNJ24jo" title="승리요정룩 몰아보기 #ootd #데일리룩코디 #데일리룩코디 #zara #에이블리하울" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-      <div class="swiper-slide"> <iframe width="431" height="766" src="https://www.youtube.com/embed/NjN8M60Z6VM" title="더워지기전 마지막 데님입쟈!! #데일리룩코디#데님코디 #데님러버 #newjeans #에이블리하울 #ootd" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></iframe></div>
-
+      <div class="swiper-slide">
+        <iframe width="100%" height="500" src="https://www.youtube.com/embed/avBChfhBCko" title="moving poster" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="swiper-slide">
+        <iframe width="100%" height="500" src="https://www.youtube.com/embed/kKS3HHyVhlg" title="summer look" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="swiper-slide">
+        <iframe width="100%" height="500" src="https://www.youtube.com/embed/6ELXnNJ24jo" title="ootd" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="swiper-slide">
+        <iframe width="100%" height="500" src="https://www.youtube.com/embed/NjN8M60Z6VM" title="denim look" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
 
+    <!-- 네비게이션 버튼 (반드시 .swiper 안에 위치) -->
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
   </div>
+</section>
+<!-- VIDEO 섹션 끝 -->
 
-   <script>
+<!-- 모든 스크립트는 </body> 직전에 한 번만 선언하는 것이 좋습니다 -->
+<script>
+  $(document).ready(function() {
+    // Swiper 초기화
     var swiper = new Swiper(".iframevideo", {
       navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
       },
+      // 슬라이드가 잘 보이도록 루프나 간격 설정을 추가하면 좋습니다.
+      loop: true,
+      spaceBetween: 20,
     });
-  </script>
-    </section>
-        
-<script>
-  AOS.init({
-    duration : "2000"
-  });
 
+    // AOS 초기화
+    AOS.init({
+      duration: 2000
+    });
+  });
 </script>
 </html>
 
