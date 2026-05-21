@@ -1,5 +1,8 @@
 @charset "utf-8";
 
+/* ==========================================
+   대형 모니터 및 노트북 (1600px 이하)
+   ========================================== */
 @media screen and (max-width: 1600px) {
   .profile img {
     width: 80%;
@@ -8,6 +11,10 @@
     width: 100%;
   }
 }
+
+/* ==========================================
+   일반 태블릿 및 작은 모니터 (1200px 이하)
+   ========================================== */
 @media screen and (max-width: 1200px) {
   html {
     font-size: 14px;
@@ -19,6 +26,10 @@
     width: 100%;
   }
 }
+
+/* ==========================================
+   작은 태블릿 및 가로 모바일 (1000px 이하)
+   ========================================== */
 @media screen and (max-width: 1000px) {
   header ul {
     gap: 50px;
@@ -38,12 +49,21 @@
   .project .project1 {
     width: 100%;
   }
+  
+  /* 메인 인터뷰 및 프로젝트 iframe 반응형 너비 조정 */
+  .main-video-wrapper,
   .project .container iframe {
-    width: 60%;
+    width: 80%;
+    height: auto;
+    aspect-ratio: 16 / 9; /* 영상 비율 유지 */
     display: block;
     margin: 0 auto;
   }
 }
+
+/* ==========================================
+   스마트폰 세로 모드 일반 (768px 이하)
+   ========================================== */
 @media screen and (max-width: 768px) {
   html {
     font-size: 12px;
@@ -53,139 +73,158 @@
     text-align: center;
   }
   .iframevideo {
-    height: 50vh;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+  
+  /* 탭 버튼 모바일 밸런스 조정 */
+  .tab-btn {
+    padding: 10px 20px;
+    font-size: 14px;
   }
 }
 
-
-
+/* ==========================================
+   모바일 구간 세분화 (671px ~ 649px)
+   ========================================== */
 @media screen and (max-width: 671px) {
-  html {
-    font-size: 12px;
+  header ul {
+    gap: 20px; /* 깨져있던 줄바꿈 오류 수정 */
   }
-  header ul{
-    gap: 20
-    px;
-    
-
-  }
+  .main-video-wrapper,
   .project .container iframe {
-  width: 80%;
-  display: block;
-  margin: 0 auto;
+    width: 85%;
   }
-  }
-@media screen and (max-width: 660px) {
-  html {
-    font-size: 12px;
-  }
-  header ul{
-  gap : 10px
-   }
-
-  .project .container iframe {
-  width: 90%;
-  display: block;
-  margin: 0 auto;
-  }
-  }
-@media screen and (max-width: 649px) {
-  html {
-    font-size: 12px;
-  }
-  header ul{
-  gap : 10px
 }
 
+@media screen and (max-width: 660px) {
+  header ul {
+    gap: 10px;
+  }
+  .main-video-wrapper,
   .project .container iframe {
-  width: 80%;
-  display: block;
-  margin: 0 auto;
+    width: 90%;
   }
-  }
+}
 
-  @media screen and (max-width:555px) {
-    .name {
-      font-size: 4rem;
-    }
-      html {
+@media screen and (max-width: 649px) {
+  header ul {
+    gap: 10px;
+  }
+  .main-video-wrapper,
+  .project .container iframe {
+    width: 90%;
+  }
+}
+
+/* ==========================================
+   소형 모바일 구간 (555px 이하)
+   ========================================== */
+@media screen and (max-width: 555px) {
+  .name {
+    font-size: 4rem;
+  }
+  html {
     font-size: 10px;
   }
-  header ul{
-  gap : 15px
+  header ul {
+    gap: 15px;
+  }
+  
+  /* 탭 메뉴가 화면 밖으로 넘치지 않도록 조정 */
+  .tab-menu {
+    gap: 8px;
+    flex-wrap: wrap; /* 모바일에서 탭이 많아지면 아래로 떨어지게 설정 */
+  }
+  .tab-btn {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
 }
 
-}
-
-@media screen and (max-width:514px) {
-  header ul{
+@media screen and (max-width: 514px) {
+  header ul {
     font-size: 1.5rem;
     gap: 10px;
   }
-    .project .container iframe {
-  width: 90%;
-  display: block;
-  margin: 0 auto;
+  .main-video-wrapper,
+  .project .container iframe {
+    width: 95%;
   }
 }
 
-@media screen and (max-width:497px) {
-  header ul{
+@media screen and (max-width: 497px) {
+  header ul {
     font-size: 1.2rem;
   }  
 }
-@media screen and (max-width:449px) {
-  header ul{
+
+@media screen and (max-width: 449px) {
+  header ul {
     font-size: 1rem;
   }  
-      .project .container iframe {
-  width: 90%;
-  height: 20;
-  display: block;
-  margin: 0 auto;
+  .main-video-wrapper,
+  .project .container iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9; /* 단위를 알 수 없던 height: 20 제거 후 최적화 */
   }
 }
-@media screen and (max-width:398px) {
-  header ul{
-    font-size: 1rem;
-    gap: 5px;
-    display: none;
+
+/* ==========================================
+   최소형 모바일 기기 (398px 이하)
+   ========================================== */
+@media screen and (max-width: 398px) {
+  header ul {
+    display: none; /* 내비게이션 숨김 */
   }  
-  .name{
+  .name {
     font-size: 3.5rem;
   }
- .about .inner .profile .text .span{
-    font-size: 1rem;
+  /* 클래스 구조 정상화 */
+  .about .inner .text span {
+    font-size: 1.2rem;
   }
-      .project .container iframe {
-  width: 90%;
-  height: 20;
-  display: block;
-  margin: 0 auto;
+  .main-video-wrapper,
+  .project .container iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
   }
 }
-@media screen and (max-width:360px) {
-  header ul{
-    font-size: 1rem;
-    gap: 5px;
-    display: none;
-  }  
 
-  .name{
+/* 초소형 모바일 기기 (360px 이하 스마트폰) */
+@media screen and (max-width: 360px) {
+  .name {
     font-size: 3rem;
   }
- .about .inner .profile .text .span{
-    font-size: 1rem;
+  .about .inner .text span {
+    font-size: 1.1rem;
   }
+  
+  /* 영상이 0%가 되거나 사라지지 않도록 모바일 최적화 수정 */
+  .main-video-wrapper,
+  .project1,
   .project .container iframe {
-  width: 0%;
-  display: block;
-  margin: 0 auto;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
   }
+  
   .profile img {
-    width: 20%;
+    width: 100%; /* 프로필 사진이 너무 작아지지 않게 수정 */
   }
-  .iframevideo{
-    width: 50px
+  
+  /* Swiper 쇼츠/디자인 레이아웃 안정화 */
+  .iframevideo {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+  
+  /* 디자인 아트웍 탭 내부 이미지 높이 자동화 */
+  #tab-design .swiper-slide img {
+    height: auto !important;
+    aspect-ratio: 1 / 1; /* 정사각형 혹은 자유 비율 */
   }
 }
