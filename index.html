@@ -41,14 +41,14 @@
   <link rel="stylesheet" href="css/style.css"> 
   <link rel="stylesheet" href="css/responsive.css">
   
-  <!-- jQuery 및 Slick (필요시 사용) -->
+  <!-- jQuery 및 Slick -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
   <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
   <script src="js/style.js"></script>
 
-  <!-- 아이프레임 호버 효과 전용 CSS 추가 -->
+  <!-- 아이프레임 호버 효과 및 탭 메뉴 CSS -->
   <style>
     /* iframe을 감싸는 부모 컨테이너 설정 */
     .project1 {
@@ -116,6 +116,43 @@
         font-size: 14px;
         color: #ffd700; /* 작업 기간에 포인트를 주기 위한 노란색 */
         font-weight: bold;
+    }
+
+    /* 탭 메뉴 스타일 추가 */
+    .tab-menu {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .tab-btn {
+      padding: 12px 30px;
+      font-size: 16px;
+      font-weight: bold;
+      background-color: #f5f5f5;
+      border: 2px solid #e0e0e0;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .tab-btn:hover {
+      background-color: #e0e0e0;
+    }
+
+    .tab-btn.active {
+      background-color: #333;
+      color: #fff;
+      border-color: #333;
+    }
+
+    .tab-content {
+      display: none; /* 기본적으로 모든 탭 콘텐츠 숨김 */
+    }
+
+    .tab-content.active {
+      display: block; /* 활성화된 탭만 노출 */
     }
   </style>
 </head>
@@ -226,27 +263,72 @@
       </div>
     </section>
       
-    <!-- VIDEO 섹션 -->
-    <section class=" video">
-      <h2> SNS shorts VIDEO</h2>
+    <!-- WORKS 섹션 (탭 적용 및 쇼츠, 롱폼, 디자인 통합) -->
+    <section class="video">
+      <h2>WORKS & PORTFOLIO</h2>
 
-      <!-- Swiper 컨테이너 -->
-      <div class="swiper iframevideo">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <iframe width="100%" height="500" src="https://www.youtube.com/embed/kKS3HHyVhlg" title="summer look" frameborder="0" allowfullscreen></iframe>
-          </div>
-          <div class="swiper-slide">
-            <iframe width="100%" height="500" src="https://www.youtube.com/embed/6ELXnNJ24jo" title="ootd" frameborder="0" allowfullscreen></iframe>
-          </div>
-          <div class="swiper-slide">
-            <iframe width="100%" height="500" src="https://www.youtube.com/embed/NjN8M60Z6VM" title="denim look" frameborder="0" allowfullscreen></iframe>
+      <!-- 탭 버튼 -->
+      <div class="tab-menu">
+        <button class="tab-btn active" data-tab="tab-shorts">SNS Shorts</button>
+        <button class="tab-btn" data-tab="tab-longform">Long-form Video</button>
+        <button class="tab-btn" data-tab="tab-design">Design Artworks</button>
+      </div>
+
+      <!-- 탭 콘텐츠 전체 구역 -->
+      <div class="tab-content-container">
+        
+        <!-- 1. 쇼츠 비디오 탭 콘텐츠 -->
+        <div id="tab-shorts" class="tab-content active">
+          <div class="swiper iframevideo">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <iframe width="100%" height="500" src="https://www.youtube.com/embed/kKS3HHyVhlg" title="summer look" frameborder="0" allowfullscreen></iframe>
+              </div>
+              <div class="swiper-slide">
+                <iframe width="100%" height="500" src="https://www.youtube.com/embed/6ELXnNJ24jo" title="ootd" frameborder="0" allowfullscreen></iframe>
+              </div>
+              <div class="swiper-slide">
+                <iframe width="100%" height="500" src="https://www.youtube.com/embed/NjN8M60Z6VM" title="denim look" frameborder="0" allowfullscreen></iframe>
+              </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
           </div>
         </div>
 
-        <!-- 네비게이션 버튼 -->
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
+        <!-- 2. 롱폼 비디오 탭 콘텐츠 -->
+        <div id="tab-longform" class="tab-content">
+          <div class="swiper iframevideo">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <iframe width="100%" height="450" src="https://www.youtube.com/embed/Atlt0nLoaPI" title="Long Video 1" frameborder="0" allowfullscreen></iframe>
+              </div>
+              <div class="swiper-slide">
+                <iframe width="100%" height="450" src="https://www.youtube.com/embed/UFXZv8RSbxY" title="Long Video 2" frameborder="0" allowfullscreen></iframe>
+              </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+        </div>
+
+        <!-- 3. 디자인물 탭 콘텐츠 -->
+        <div id="tab-design" class="tab-content">
+          <div class="swiper iframevideo">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="images/KakaoTalk_Photo_2024-01-10-21-04-03.JPEG" alt="디자인 작업물 1" style="width:100%; height:500px; object-fit:cover; border-radius:12px;">
+              </div>
+              <div class="swiper-slide">
+                <!-- 이미지 경로 수정을 위해 임시 인라인 스타일링 추가 상태 -->
+                <img src="images/design_sample2.jpg" alt="디자인 작업물 2" style="width:100%; height:500px; object-fit:cover; border-radius:12px; background:#ddd; display:flex; align-items:center; justify-content:center;">
+              </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -273,7 +355,7 @@
   <!-- 모든 스크립트 통합 실행 및 초기화 -->
   <script>
     $(document).ready(function() {
-      // Swiper 초기화
+      // Swiper 초기화 (observer 추가로 비활성화 탭 내부 로딩 크기 오류 방지)
       var swiper = new Swiper(".iframevideo", {
         navigation: {
           nextEl: ".swiper-button-next",
@@ -281,6 +363,22 @@
         },
         loop: true,
         spaceBetween: 20,
+        observer: true,
+        observeParents: true,
+      });
+
+      // jQuery 탭 스크립트 구현
+      $('.tab-btn').on('click', function() {
+        // 기존 active 제거
+        $('.tab-btn').removeClass('active');
+        $('.tab-content').removeClass('active');
+
+        // 누른 탭 활성화
+        $(this).addClass('active');
+        
+        // 매칭되는 컨텐츠 박스 노출
+        var targetTab = $(this).attr('data-tab');
+        $('#' + targetTab).addClass('active');
       });
 
       // AOS 라이브러리 초기화
