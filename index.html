@@ -50,18 +50,30 @@
 
   <!-- 아이프레임 호버 효과 및 탭 메뉴 CSS -->
   <style>
-    /* iframe을 감싸는 부모 컨테이너 설정 */
-    .project1 {
+    /* iframe을 감싸는 모든 비디오 범용 컨테이너 */
+    .video-container {
         position: relative;   /* 오버레이의 기준점 */
-        width: 100%;          /* 기존 레이아웃 유지 */
-        height: 400px;        /* iframe 높이 고정 */
+        width: 100%;          
+        height: 400px;        /* 기본 높이 */
         overflow: hidden;     /* 삐져나오는 부분 숨김 */
         border-radius: 12px;  /* 모서리 부드럽게 */
         box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* 부드러운 그림자 */
     }
 
+    /* 메인 영상과 쇼츠 영상 전용 높이 조절 */
+    .main.video .video-container {
+        max-width: 600px;     /* 메인 영상 기존 너비 유지 */
+        margin: 0 auto;
+    }
+    #tab-shorts .video-container {
+        height: 500px;        /* 쇼츠는 세로가 기므로 500px로 세팅 */
+    }
+    #tab-longform .video-container {
+        height: 315px;        /* 롱폼 Swiper용 높이 세팅 */
+    }
+
     /* 내부 iframe 스타일 초기화 */
-    .project1 iframe {
+    .video-container iframe {
         width: 100%;
         height: 100%;
         border: none;
@@ -69,7 +81,7 @@
     }
 
     /* 호버 시 나타날 어두운 마스크 레이어 */
-    .project-overlay {
+    .video-overlay {
         position: absolute;
         top: 0;
         left: 0;
@@ -91,34 +103,35 @@
         padding: 20px;
         box-sizing: border-box;
         text-align: center;
+        z-index: 10;
     }
 
-    /* 마우스를 .project1 박스에 올렸을 때 오버레이 노출 */
-    .project1:hover .project-overlay {
+    /* 마우스를 박스에 올렸을 때 오버레이 노출 */
+    .video-container:hover .video-overlay {
         opacity: 1;
     }
 
     /* 오버레이 내부 텍스트 스타일 */
-    .project-overlay h3 {
+    .video-overlay h3 {
         font-size: 22px;
         font-weight: 700;
         margin: 0 0 12px 0;
         letter-spacing: -0.5px;
     }
 
-    .project-overlay p {
+    .video-overlay p {
         font-size: 15px;
         margin: 4px 0;
         color: #e0e0e0;
     }
 
-    .project-overlay p.period {
+    .video-overlay p.period {
         font-size: 14px;
         color: #ffd700; /* 작업 기간에 포인트를 주기 위한 노란색 */
         font-weight: bold;
     }
 
-    /* 탭 메뉴 스타일 추가 */
+    /* 탭 메뉴 스타일 */
     .tab-menu {
       display: flex;
       justify-content: center;
@@ -176,8 +189,16 @@
       <button class="btn">Click</button>
     </section>
     
+    <!-- 메인 영상 섹션 (호버 오버레이 추가) -->
     <section class="main video">
-      <iframe width="600" height="400" src="https://www.youtube.com/embed/Atlt0nLoaPI" title="Silverzoo Interview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/Atlt0nLoaPI" title="Silverzoo Interview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="video-overlay">
+          <h3>Silverzoo Interview</h3>
+          <p class="period">작업 기간: 2026.05</p>
+          <p>자기소개 및 인터뷰 영상</p>
+        </div>
+      </div>
     </section>
    
     <section class="about">
@@ -219,41 +240,41 @@
       </div>
     </section>
 
-    <!-- PROJECT 섹션 (호버 오버레이 적용 완료) -->
+    <!-- PROJECT 섹션 -->
     <section class="project">
       <h2>PROJECT</h2>
       <div class="container">
         
-        <div class="project1">
-          <iframe height="400" src="https://www.youtube.com/embed/UFXZv8RSbxY?si=atNPEa6RxYVk7WPn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          <div class="project-overlay">
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/UFXZv8RSbxY?si=atNPEa6RxYVk7WPn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <div class="video-overlay">
             <h3>Kinetic Typography</h3>
             <p class="period">작업 기간: 2026.01.23~ 2026.02.26</p>
             <p>모션그래픽</p>
           </div>
         </div>
 
-        <div class="project1">
-          <iframe height="400" src="https://www.youtube.com/embed/4kxU0sW22ow?si=wjWRHhy-8qg6Xozc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          <div class="project-overlay">
-            <h3>공모전 '헌혈시티 2</h3>
-            <p class="period">작업 기간: 2026.03 ~4.20 </p>
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/4kxU0sW22ow?si=wjWRHhy-8qg6Xozc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <div class="video-overlay">
+            <h3>공모전 '헌혈시티 2'</h3>
+            <p class="period">작업 기간: 2026.03 ~ 4.20 </p>
             <p>팀 프로젝트 AI 활용 참여</p>
           </div>
         </div>
 
-        <div class="project1">
-          <iframe height="400" src="https://www.youtube.com/embed/A6_t9to2NeY?si=V0QLzClPeC71wVTj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          <div class="project-overlay">
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/A6_t9to2NeY?si=V0QLzClPeC71wVTj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <div class="video-overlay">
             <h3>Wedding editing</h3>
-            <p class="period">작업 기간: 2026.03.09 ~3.16</p>
+            <p class="period">작업 기간: 2026.03.09 ~ 3.16</p>
             <p>컷 편집 / 색보정 </p>
           </div>
         </div>
 
-        <div class="project1">
-          <iframe height="400" src="https://www.youtube.com/embed/avBChfhBCko" title="moving poster - Victoria Swedish Egg White Facial Soap" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          <div class="project-overlay">
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/avBChfhBCko" title="moving poster - Victoria Swedish Egg White Facial Soap" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <div class="video-overlay">
             <h3>무빙 포스터 제작</h3>
             <p class="period">작업 기간: 2026.05.13</p>
             <p>Victoria Soap</p>
@@ -263,7 +284,7 @@
       </div>
     </section>
       
-    <!-- WORKS 섹션 (탭 적용 및 쇼츠, 롱폼, 디자인 통합) -->
+    <!-- WORKS 섹션 -->
     <section class="video">
       <h2>WORKS & PORTFOLIO</h2>
 
@@ -282,13 +303,34 @@
           <div class="swiper iframevideo">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
-                <iframe width="100%" height="500" src="https://www.youtube.com/embed/kKS3HHyVhlg" title="summer look" frameborder="0" allowfullscreen></iframe>
+                <div class="video-container">
+                  <iframe src="https://www.youtube.com/embed/kKS3HHyVhlg" title="summer look" frameborder="0" allowfullscreen></iframe>
+                  <div class="video-overlay">
+                    <h3>Summer Look</h3>
+                    <p class="period">작업 기간: 2026.05</p>
+                    <p>SNS 숏폼 트렌드 패션 룩북</p>
+                  </div>
+                </div>
               </div>
               <div class="swiper-slide">
-                <iframe width="100%" height="500" src="https://www.youtube.com/embed/6ELXnNJ24jo" title="ootd" frameborder="0" allowfullscreen></iframe>
+                <div class="video-container">
+                  <iframe src="https://www.youtube.com/embed/6ELXnNJ24jo" title="ootd" frameborder="0" allowfullscreen></iframe>
+                  <div class="video-overlay">
+                    <h3>OOTD Shorts</h3>
+                    <p class="period">작업 기간: 2026.04</p>
+                    <p>데일리 코디 숏폼 편집</p>
+                  </div>
+                </div>
               </div>
               <div class="swiper-slide">
-                <iframe width="100%" height="500" src="https://www.youtube.com/embed/NjN8M60Z6VM" title="denim look" frameborder="0" allowfullscreen></iframe>
+                <div class="video-container">
+                  <iframe src="https://www.youtube.com/embed/NjN8M60Z6VM" title="denim look" frameborder="0" allowfullscreen></iframe>
+                  <div class="video-overlay">
+                    <h3>Denim Look</h3>
+                    <p class="period">작업 기간: 2026.04</p>
+                    <p>데님 에디션 바이럴 영상</p>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="swiper-button-next"></div>
@@ -296,16 +338,41 @@
           </div>
         </div>
 
-        <!-- 2. 롱폼 비디오 탭 콘텐츠 -->
+        <!-- 2. 롱폼 비디오 탭 콘텐츠 (마크업 오류 완전 해결) -->
         <div id="tab-longform" class="tab-content">
           <div class="swiper iframevideo">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
-                <iframe width="100%" height="315" src="https://www.youtube.com/embed/Pba0fuo2HkY?si=v6FaWMPyRkpJO1Or" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="video-container">
+                  <iframe src="https://www.youtube.com/embed/Pba0fuo2HkY?si=v6FaWMPyRkpJO1Or" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                  <div class="video-overlay">
+                    <h3>Long-form Project 1</h3>
+                    <p class="period">작업 기간: 2026.02</p>
+                    <p>유튜브 롱폼 기획 및 편집</p>
+                  </div>
+                </div>
+              </div>
               <div class="swiper-slide">
-               <iframe width="560" height="315" src="https://www.youtube.com/embed/XxD_Pj5W7h0?si=sIdyxA9xFP0ZPOPa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                 <div class="swiper-slide">
-               <iframe width="560" height="315" src="https://www.youtube.com/embed/B-E1U3B1eYQ?si=CO2gJagpSOte7u2I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="video-container">
+                  <iframe src="https://www.youtube.com/embed/XxD_Pj5W7h0?si=sIdyxA9xFP0ZPOPa" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                  <div class="video-overlay">
+                    <h3>Long-form Project 2</h3>
+                    <p class="period">작업 기간: 2026.03</p>
+                    <p>브랜드 홍보 영상 다큐멘터리</p>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="video-container">
+                  <iframe src="https://www.youtube.com/embed/B-E1U3B1eYQ?si=CO2gJagpSOte7u2I" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                  <div class="video-overlay">
+                    <h3>Long-form Project 3</h3>
+                    <p class="period">작업 기간: 2026.04</p>
+                    <p>기업 세미나 스케치 영상</p>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
           </div>
@@ -319,7 +386,6 @@
                 <img src="images/KakaoTalk_Photo_2024-01-10-21-04-03.JPEG" alt="디자인 작업물 1" style="width:100%; height:500px; object-fit:cover; border-radius:12px;">
               </div>
               <div class="swiper-slide">
-                <!-- 이미지 경로 수정을 위해 임시 인라인 스타일링 추가 상태 -->
                 <img src="images/design_sample2.jpg" alt="디자인 작업물 2" style="width:100%; height:500px; object-fit:cover; border-radius:12px; background:#ddd; display:flex; align-items:center; justify-content:center;">
               </div>
             </div>
