@@ -25,6 +25,7 @@ body {
   background-color: #8e6032;
 }
 
+/* FONT-FACE */
 @font-face {
   font-family: "Cafe24MeongiWhite";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Meongi-W-v1.0.woff2")
@@ -32,7 +33,6 @@ body {
   font-weight: normal;
   font-display: swap;
 }
-
 @font-face {
   font-family: "OngleipParkDahyeon";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2411-3@1.0/Ownglyph_ParkDaHyun.woff2")
@@ -47,7 +47,6 @@ body {
   font-weight: normal;
   font-display: swap;
 }
-
 @font-face {
   font-family: "InkLiquid";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff")
@@ -55,7 +54,6 @@ body {
   font-weight: normal;
   font-display: swap;
 }
-
 @font-face {
   font-family: "IsYun";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff")
@@ -64,13 +62,12 @@ body {
   font-display: swap;
 }
 
-/* header */
+/* HEADER */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 40px;
-  align-items: center;
   height: 100px;
   background-color: #663d14;
   position: fixed;
@@ -79,23 +76,17 @@ header {
   left: 0;
   z-index: 999;
 }
-
 header ul {
   display: flex;
   gap: 100px;
   font-family: "Cafe24MeongiWhite";
   font-size: 1.5rem;
 }
-
-.logo {
-}
-
 .logo img {
   width: 200px;
 }
 
-/* main */
-
+/* MAIN & NAME */
 .name {
   margin-top: 350px;
   position: relative;
@@ -112,7 +103,6 @@ header ul {
   font-family: "Cafe24MeongiWhite";
   color: antiquewhite;
 }
-
 .name .btn:hover {
   font-family: "Cafe24MeongiBlack";
   color: #663d14;
@@ -127,14 +117,65 @@ section h2 {
   margin: 10rem 0 3rem;
 }
 
-main video {
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
+/* ─── [새로 추가 및 변경된 메인 비디오 Hover 스타일] ─── */
+.video-container {
+  position: relative;
+  width: 80%;               /* 좌우 여백을 주기 위해 80% 설정 */
+  max-width: 1200px;        /* 너무 커지지 않도록 최대폭 제한 */
+  height: 70vh;             /* 화면 높이의 70% 차지 */
+  margin: 0 auto;           /* 블록 요소를 가로 가운데 정렬 크리티컬! */
+  overflow: hidden;         /* 가상 레이어가 부모 박스 밖으로 깨지지 않게 방지 */
+  border-radius: 12px;      /* 영상 모서리를 부드럽게 깎는 옵션 (선택사항) */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* 깊이감을 주는 그림자 (선택사항) */
 }
 
-/* about */
+.video-container iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
 
+/* 평소에는 투명하게 숨겨놓는 정보 레이어 */
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(102, 61, 24, 0.9); /* 소현님의 메인 브라운 배경색 크래프트 적용 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;                                /* 기본 상태: 숨김 */
+  transition: opacity 0.35s ease-in-out;     /* 스르륵 나타나는 애니메이션 속도 */
+}
+
+/* 메인 비디오 영역에 마우스 호버 시 오버레이 등장 */
+.video-container:hover .video-overlay {
+  opacity: 1;
+}
+
+/* 내부 텍스트 스타일 가공 */
+.video-info {
+  text-align: center;
+  padding: 20px;
+}
+.video-info h3 {
+  font-family: "Cafe24MeongiWhite";
+  font-size: 2.8rem;
+  color: antiquewhite;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+.video-info p {
+  font-family: "OngleipParkDahyeon";
+  font-size: 1.8rem;
+  color: #eee;
+}
+/* ──────────────────────────────────────────────────────── */
+
+
+/* ABOUT */
 .about .inner {
   display: flex;
   width: 80%;
@@ -143,16 +184,13 @@ main video {
   gap: 40px;
   align-items: center;
 }
-
 .about .inner .profile {
   width: 50%;
   height: 100%;
 }
-
 .about .text span {
   font-family: "InkLiquid";
 }
-
 .about .pro-text {
   font-family: "IsYun";
 }
@@ -165,13 +203,11 @@ main video {
   display: flex;
   gap: 30px;
 }
-
 section h3 {
   color: #eee;
   line-height: 2;
   font-size: 2rem;
 }
-
 .text {
   max-width: 1000px;
   color: #fff;
@@ -186,7 +222,8 @@ section h3 {
   gap: 30px;
   margin: 2rem 0;
 }
-/* project tab */
+
+/* PROJECT TAB */
 .project .container {
   width: 60%;
   display: flex;
@@ -202,14 +239,14 @@ section h3 {
   width: 100%;
   max-width: 800px;
 }
-/* video */
+
+/* VIDEO (SLIDER CONTAINER) */
 .iframevideo {
   width: 80%;
   height: 70vh;
   display: flex;
   justify-content: center;
 }
-
 .swiper-silde {
   width: 100%;
 }
@@ -230,7 +267,7 @@ section h3 {
   background-color: black;
 }
 
-/* contact */
+/* CONTACT */
 .contact {
   width: 80%;
   margin: 0 auto;
@@ -250,12 +287,12 @@ section h3 {
   height: 100px;
   object-fit: contain;
 }
+
 /* FOOTER */
 footer {
   height: 4vh;
   margin: 2rem auto;
 }
-
 footer p {
   text-align: center;
   color: #eee;
