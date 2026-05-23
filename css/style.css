@@ -117,45 +117,70 @@ section h2 {
   margin: 10rem 0 3rem;
 }
 
-/* ─── [새로 추가 및 변경된 메인 비디오 Hover 스타일] ─── */
-.video-container {
-  position: relative;
-  width: 80%;               /* 좌우 여백을 주기 위해 80% 설정 */
-  max-width: 1200px;        /* 너무 커지지 않도록 최대폭 제한 */
-  height: 70vh;             /* 화면 높이의 70% 차지 */
-  margin: 0 auto;           /* 블록 요소를 가로 가운데 정렬 크리티컬! */
-  overflow: hidden;         /* 가상 레이어가 부모 박스 밖으로 깨지지 않게 방지 */
-  border-radius: 12px;      /* 영상 모서리를 부드럽게 깎는 옵션 (선택사항) */
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* 깊이감을 주는 그림자 (선택사항) */
+/* VIDEO TABS (새로 추가된 버튼 스타일) */
+.video-tabs {
+  display: flex;
+  justify-content: center;   /* 버튼 그룹 가운데 정렬 */
+  gap: 20px;                 /* 버튼 사이 여백 */
+  margin-bottom: 2.5rem;     /* 버튼과 비디오창 사이 여백 */
+}
+.video-tabs .tab-btn {
+  background-color: transparent;
+  border: 2px solid antiquewhite;
+  color: antiquewhite;
+  padding: 10px 30px;
+  font-size: 1.5rem;
+  font-family: "Cafe24MeongiWhite"; /* 요청하신 포트폴리오 폰트 세팅 */
+  border-radius: 30px;       /* 둥글둥글하고 귀여운 스타일 */
+  transition: all 0.3s ease;
+  outline: none;
+}
+/* 버튼 마우스 호버 및 액티브(선택) 상태 */
+.video-tabs .tab-btn:hover,
+.video-tabs .tab-btn.active {
+  font-family: "Cafe24MeongiBlack"; /* 호버 시 두꺼운 폰트 체인지 */
+  background-color: #663d14;        /* 헤더 배경 브라운 컬러로 매칭 */
+  color: #fff;
+  border-color: #663d14;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* VIDEO CONTAINER (가운데 정렬 및 iframe Hover 기능) */
+.video-container {
+  position: relative;
+  width: 80%;               /* 좌우 여백 확보 */
+  max-width: 1200px;        /* 과도한 확대 방지 */
+  height: 70vh;             /* 영상 화면 높이 지정 */
+  margin: 0 auto;           /* 크리티컬: 요소를 가로 정중앙 정렬 */
+  overflow: hidden;         /* 호버 정보창이 튀어나가지 않게 잠금 */
+  border-radius: 12px;      /* 영상 모서리를 부드럽게 라운딩 */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
 .video-container iframe {
   width: 100%;
   height: 100%;
   display: block;
 }
 
-/* 평소에는 투명하게 숨겨놓는 정보 레이어 */
+/* 평소에는 투명하게 감추는 오버레이 영역 */
 .video-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(102, 61, 24, 0.9); /* 소현님의 메인 브라운 배경색 크래프트 적용 */
+  background-color: rgba(102, 61, 24, 0.9); /* 어두운 브라운 톤 반투명 커튼 */
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0;                                /* 기본 상태: 숨김 */
-  transition: opacity 0.35s ease-in-out;     /* 스르륵 나타나는 애니메이션 속도 */
+  opacity: 0;                                /* 평소 투명도 0 */
+  transition: opacity 0.35s ease-in-out;     /* 스르륵 나타나는 시간 효과 */
 }
-
-/* 메인 비디오 영역에 마우스 호버 시 오버레이 등장 */
+/* 비디오 박스에 마우스 올리면 오버레이가 보임 */
 .video-container:hover .video-overlay {
   opacity: 1;
 }
-
-/* 내부 텍스트 스타일 가공 */
+/* 호버 텍스트 스타일 가공 */
 .video-info {
   text-align: center;
   padding: 20px;
@@ -172,7 +197,6 @@ section h2 {
   font-size: 1.8rem;
   color: #eee;
 }
-/* ──────────────────────────────────────────────────────── */
 
 
 /* ABOUT */
@@ -240,7 +264,7 @@ section h3 {
   max-width: 800px;
 }
 
-/* VIDEO (SLIDER CONTAINER) */
+/* VIDEO (SLIDER) */
 .iframevideo {
   width: 80%;
   height: 70vh;
