@@ -25,46 +25,52 @@ body {
   background-color: #8e6032;
 }
 
-/* 폰트 등록 */
 @font-face {
   font-family: "Cafe24MeongiWhite";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Meongi-W-v1.0.woff2") format("woff2");
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Meongi-W-v1.0.woff2")
+    format("woff2");
   font-weight: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "OngleipParkDahyeon";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2411-3@1.0/Ownglyph_ParkDaHyun.woff2") format("woff2");
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2411-3@1.0/Ownglyph_ParkDaHyun.woff2")
+    format("woff2");
   font-weight: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Cafe24MeongiBlack";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Meongi-B-v1.0.woff2") format("woff2");
-  font-weight: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "InkLiquid";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff") format("woff");
-  font-weight: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "IsYun";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff") format("woff");
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Meongi-B-v1.0.woff2")
+    format("woff2");
   font-weight: normal;
   font-display: swap;
 }
 
-/* ==========================================
-   HEADER 구역
-   ========================================== */
+@font-face {
+  font-family: "InkLiquid";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff")
+    format("woff");
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IsYun";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff")
+    format("woff");
+  font-weight: normal;
+  font-display: swap;
+}
+
+/* header */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 40px;
+  align-items: center;
   height: 100px;
   background-color: #663d14;
   position: fixed;
@@ -81,13 +87,15 @@ header ul {
   font-size: 1.5rem;
 }
 
+.logo {
+}
+
 .logo img {
   width: 200px;
 }
 
-/* ==========================================
-   MAIN 키비주얼 구역
-   ========================================== */
+/* main */
+
 .name {
   margin-top: 350px;
   position: relative;
@@ -104,12 +112,12 @@ header ul {
   font-family: "Cafe24MeongiWhite";
   color: antiquewhite;
 }
+
 .name .btn:hover {
   font-family: "Cafe24MeongiBlack";
   color: #663d14;
 }
 
-/* 타이틀 공통 */
 section h2 {
   color: #fff;
   text-align: center;
@@ -119,33 +127,14 @@ section h2 {
   margin: 10rem 0 3rem;
 }
 
-/* ==========================================
-   MAIN INTERVIEW 구역 (수정 및 추가)
-   ========================================== */
-.main.video {
+main video {
   width: 100%;
-  height: auto;
-  min-height: 60vh;
-  display: flex;
-  flex-direction: column; /* h2 타이틀과 영상 세로 배치 */
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 5rem;
+  height: 100vh;
+  object-fit: cover;
 }
 
-/* 메인 비디오 감싸는 박스 스타일 */
-.main-video-wrapper {
-  position: relative;
-  width: 600px;
-  height: 400px;
-  overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
+/* about */
 
-/* ==========================================
-   ABOUT 구역
-   ========================================== */
 .about .inner {
   display: flex;
   width: 80%;
@@ -154,13 +143,16 @@ section h2 {
   gap: 40px;
   align-items: center;
 }
+
 .about .inner .profile {
   width: 50%;
   height: 100%;
 }
+
 .about .text span {
   font-family: "InkLiquid";
 }
+
 .about .pro-text {
   font-family: "IsYun";
 }
@@ -173,11 +165,13 @@ section h2 {
   display: flex;
   gap: 30px;
 }
+
 section h3 {
   color: #eee;
   line-height: 2;
   font-size: 2rem;
 }
+
 .text {
   max-width: 1000px;
   color: #fff;
@@ -192,149 +186,39 @@ section h3 {
   gap: 30px;
   margin: 2rem 0;
 }
-
-/* ==========================================
-   PROJECT 리스트 구역 (오버레이 공통화)
-   ========================================== */
+/* project tab */
 .project .container {
   width: 60%;
   display: flex;
   margin: 0 auto;
   justify-content: center;
-  gap: 20px; /* 공격적인 밀착 대신 여유 부여 */
+  gap: 5px;
   flex-wrap: wrap;
 }
 .project .project1 {
   width: 48%;
-  position: relative;
-  overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-  height: 400px;
 }
 .project .container iframe {
   width: 100%;
-  height: 100%;
-  border: none;
+  max-width: 800px;
 }
-
-/* [공통 호버 오버레이 효과] */
-.project-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.75);
-  color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none; /* 오버레이 밑의 영상 터치 가능 */
-  padding: 20px;
-  box-sizing: border-box;
-  text-align: center;
-  z-index: 2;
-}
-
-/* 마우스 호버 작동 구조 생성 */
-.project1:hover .project-overlay,
-.main-video-wrapper:hover .project-overlay {
-  opacity: 1;
-}
-
-.project-overlay h3 {
-  font-family: "Cafe24MeongiWhite";
-  font-size: 22px;
-  font-weight: 700;
-  margin: 0 0 12px 0;
-  letter-spacing: -0.5px;
-}
-.project-overlay p {
-  font-family: "IsYun";
-  font-size: 15px;
-  margin: 4px 0;
-  color: #e0e0e0;
-}
-.project-overlay p.period {
-  font-size: 14px;
-  color: #ffd700; /* 포인트 골드/옐로우 컬러 */
-  font-weight: bold;
-}
-
-/* ==========================================
-   WORKS 탭 메뉴 및 슬라이더 구역 (신규 추가 및 덮어쓰기)
-   ========================================== */
-.tab-menu {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 40px;
-}
-
-.tab-btn {
-  padding: 12px 35px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  font-family: "IsYun";
-  background-color: #663d14; /* 사이트 시그니처 톤에 맞춤 */
-  color: #ffebdc;
-  border: 2px solid #a87643;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.tab-btn:hover {
-  background-color: #a87643;
-  color: #fff;
-}
-
-.tab-btn.active {
-  background-color: antiquewhite; /* 메인 테마의 버튼 활성 색상 계승 */
-  color: #663d14;
-  border-color: antiquewhite;
-}
-
-.tab-content {
-  display: none;
-}
-
-.tab-content.active {
-  display: block;
-}
-
-/* Swiper 슬라이더 공통 */
+/* video */
 .iframevideo {
   width: 80%;
   height: 70vh;
   display: flex;
   justify-content: center;
-  margin: 0 auto;
 }
 
-.swiper-slide {
+.swiper-silde {
   width: 100%;
 }
-
 .iframevideo iframe {
   width: 80%;
   height: 100%;
   display: block;
   margin: 0 auto;
-  border: none;
-  border-radius: 12px;
 }
-
-/* Swiper 컨트롤 보정 */
-.swiper-button-next,
-.swiper-button-prev {
-  color: antiquewhite !important; /* 브라운 테마에 어울리는 내비 버튼 색상 변경 */
-}
-
 .iframevideo .swiper-pagination-bullet {
   width: 30px;
   border-radius: 0;
@@ -346,9 +230,7 @@ section h3 {
   background-color: black;
 }
 
-/* ==========================================
-   CONTACT 구역
-   ========================================== */
+/* contact */
 .contact {
   width: 80%;
   margin: 0 auto;
@@ -368,14 +250,12 @@ section h3 {
   height: 100px;
   object-fit: contain;
 }
-
-/* ==========================================
-   FOOTER 구역
-   ========================================== */
+/* FOOTER */
 footer {
   height: 4vh;
   margin: 2rem auto;
 }
+
 footer p {
   text-align: center;
   color: #eee;
