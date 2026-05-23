@@ -124,31 +124,10 @@
     }
 
     /* ----------------------------------------------------
-       첫 화면 메인 로고 및 작품 통합 탭메뉴 커스텀 CSS
+       작품 통합 탭메뉴 및 디자인 그리드 레이아웃 CSS
     ---------------------------------------------------- */
     
-    /* ① 첫 화면 메인 비주얼 (.name) 전용 스타일 */
-    .name {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh; /* 화면 전체 높이로 고정 */
-      background: #111; /* 배경 이미지 유실을 대비한 기본 다크 크래프트 톤 */
-      text-align: center;
-    }
-    .main-logo-wrapper img {
-      max-width: 300px; /* 로고 최적 크기 조정 */
-      width: 100%;
-      height: auto;
-      animation: logoFadeIn 1.5s ease-in-out;
-    }
-    @keyframes logoFadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ② 포트폴리오 탭 메뉴 레이아웃 */
+    /* 포트폴리오 작업물 탭 메뉴 레이아웃 */
     .work-tab-menu {
       display: flex;
       justify-content: center;
@@ -216,11 +195,10 @@
   </header>
 
   <main>
-    <!-- 첫 화면 섹션: 텍스트 인터뷰 타이틀을 배제하고 브랜드 로고만 깔끔하게 구성 -->
+    <!-- 첫 화면 섹션: 원래 사용하시던 텍스트와 버튼 구조로 복구 완료 -->
     <section class="name">
-      <div class="main-logo-wrapper" data-aos="fade-up">
-        <img src="images/2.png" alt="SILVERZOO LOGO">
-      </div>
+      <h1 class="intro">SILVERZOO</h1>
+      <button class="btn">Click</button>
     </section>
     
     <!-- 메인 인터뷰 영상 섹션 -->
@@ -331,7 +309,7 @@
         <button class="tab-btn" data-tab="tab-design">Design</button>
       </div>
 
-      <!-- 탭 1: SNS Shorts 슬라이더 (기본 노출 및 강제 활성화 타겟) -->
+      <!-- 탭 1: SNS Shorts 슬라이더 -->
       <div id="tab-shorts" class="tab-content active">
         <div class="swiper iframevideo">
           <div class="swiper-wrapper">
