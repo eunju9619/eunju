@@ -50,14 +50,38 @@
 
   <!-- 아이프레임 호버 효과 및 탭 메뉴 CSS -->
   <style>
-    /* 모든 영상 박스를 네모 반듯하게 통합하는 공통 컨테이너 */
+    /* 모든 영상 박스의 기본 형태 정의 */
     .video-box {
-        position: relative;   /* 오버레이의 기준점 */
+        position: relative;   /* 오버레이 정렬의 기준점 */
         width: 100%;          
-        height: 400px;        /* 요청하신 네모 반듯한 고정 높이 */
-        overflow: hidden;     /* 삐져나오는 부분 숨김 */
+        background-color: #000; /* 영상 로딩 전 검은 배경 */
+        overflow: hidden;     /* 삐져나오는 오버레이 숨김 */
         border-radius: 12px;  /* 모서리 부드럽게 */
         box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* 부드러운 그림자 */
+    }
+
+    /* 처음에 넣을 때 고유 사이즈(비율)대로 반응형 동작하도록 변경 */
+    /* 16:9 가로 영상 비율 유지용 컨테이너 클래스 */
+    .ratio-16-9 {
+        padding-top: 56.25%; /* 16:9 비율 (9 / 16 = 0.5625) */
+    }
+
+    /* 9:16 세로 숏폼 영상 비율 유지용 컨테이너 클래스 */
+    .ratio-9-16 {
+        padding-top: 177.77%; /* 9:16 비율 (16 / 9 = 1.7777) */
+        max-width: 320px;     /* 숏츠가 가로로 너무 과하게 커지는 것 방지 */
+        margin: 0 auto;       /* 중앙 정렬 */
+    }
+
+    /* 내부 iframe 스타일: 부모의 비율 박스에 꽉 차도록 절대좌표 배치 */
+    .video-box iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
     }
 
     /* 메인 인터뷰 영상 너비 제한 (기존 레이아웃 유지) */
@@ -66,12 +90,25 @@
         margin: 0 auto;
     }
 
-    /* 내부 iframe 스타일 초기화 */
-    .video-box iframe {
+    /* PROJECT 섹션: Flex를 사용하여 한 줄에 2개씩 배치 */
+    .project .container {
+        display: flex;
+        flex-wrap: wrap;       /* 자식 요소가 넘치면 다음 줄로 */
+        gap: 24px;             /* 영상 박스 간의 여백 */
         width: 100%;
-        height: 100%;
-        border: none;
-        display: block;
+    }
+
+    /* PROJECT 내부의 개별 항목 (한 줄에 2개씩) */
+    .project .container .project-item {
+        flex: 1 1 calc(50% - 12px); /* 공간을 50%씩 나눠 가짐 (여백 제외) */
+        box-sizing: border-box;
+    }
+
+    /* 모바일 환경에서는 한 줄에 1개씩 보이도록 반응형 처리 */
+    @media (max-width: 768px) {
+        .project .container .project-item {
+            flex: 1 1 100%;
+        }
     }
 
     /* 호버 시 나타날 어두운 마스크 레이어 공통 스타일 */
@@ -81,18 +118,17 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.75); /* 75% 불투명한 검은색 배경 */
-        color: #ffffff; /* 글자색 흰색 */
+        background-color: rgba(0, 0, 0, 0.75); /* 75% 불투명 검은색 */
+        color: #ffffff; 
         
-        /* 내부 글자 중앙 정렬 */
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         
         opacity: 0; /* 기본 상태: 숨김 */
-        transition: opacity 0.4s ease; /* 부드럽게 나타나는 효과 */
-        pointer-events: none; /* 마우스 오버레이 통과 기능 (영상 클릭 가능) */
+        transition: opacity 0.4s ease; /* 부드러운 호버 효과 */
+        pointer-events: none; /* 마우스 오버레이 통과 (영상 클릭 방해 금지) */
         
         padding: 20px;
         box-sizing: border-box;
@@ -105,22 +141,21 @@
         opacity: 1;
     }
 
-    /* 오버레이 내부 텍스트 스타일 */
     .video-overlay h3 {
-        font-size: 22px;
+        font-size: 20px;
         font-weight: 700;
         margin: 0 0 12px 0;
         letter-spacing: -0.5px;
     }
 
     .video-overlay p {
-        font-size: 15px;
+        font-size: 14px;
         margin: 4px 0;
         color: #e0e0e0;
     }
 
     .video-overlay p.period {
-        font-size: 14px;
+        font-size: 13px;
         color: #ffd700; /* 작업 기간 노란색 강조 */
         font-weight: bold;
     }
@@ -155,11 +190,18 @@
     }
 
     .tab-content {
-      display: none; /* 기본적으로 모든 탭 콘텐츠 숨김 */
+      display: none; 
     }
 
     .tab-content.active {
-      display: block; /* 활성화된 탭만 노출 */
+      display: block; 
+    }
+
+    /* Swiper 이미지 슬라이드 맞춤 */
+    .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: auto;
     }
   </style>
 </head>
@@ -183,9 +225,9 @@
       <button class="btn">Click</button>
     </section>
     
-    <!-- 메인 영상 섹션 (네모 반듯 + 오버레이 적용) -->
+    <!-- 메인 영상 섹션 (가로 비율 최적화) -->
     <section class="main video">
-      <div class="video-box">
+      <div class="video-box ratio-16-9">
         <iframe src="https://www.youtube.com/embed/Atlt0nLoaPI" title="Silverzoo Interview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         <div class="video-overlay">
           <h3>Silverzoo Interview</h3>
@@ -234,44 +276,56 @@
       </div>
     </section>
 
-    <!-- PROJECT 섹션 (네모 반듯 + 오버레이 적용) -->
+    <!-- PROJECT 섹션 (Flex를 이용해 한 줄에 2개씩 정렬) -->
     <section class="project">
       <h2>PROJECT</h2>
       <div class="container">
         
-        <div class="video-box">
-          <iframe src="https://www.youtube.com/embed/UFXZv8RSbxY?si=atNPEa6RxYVk7WPn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          <div class="video-overlay">
-            <h3>Kinetic Typography</h3>
-            <p class="period">작업 기간: 2026.01.23~ 2026.02.26</p>
-            <p>모션그래픽</p>
+        <!-- 프로젝트 1 -->
+        <div class="project-item">
+          <div class="video-box ratio-16-9">
+            <iframe src="https://www.youtube.com/embed/UFXZv8RSbxY?si=atNPEa6RxYVk7WPn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="video-overlay">
+              <h3>Kinetic Typography</h3>
+              <p class="period">작업 기간: 2026.01.23~ 2026.02.26</p>
+              <p>모션그래픽</p>
+            </div>
           </div>
         </div>
 
-        <div class="video-box">
-          <iframe src="https://www.youtube.com/embed/4kxU0sW22ow?si=wjWRHhy-8qg6Xozc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          <div class="video-overlay">
-            <h3>공모전 '헌혈시티 2'</h3>
-            <p class="period">작업 기간: 2026.03 ~ 4.20 </p>
-            <p>팀 프로젝트 AI 활용 참여</p>
+        <!-- 프로젝트 2 -->
+        <div class="project-item">
+          <div class="video-box ratio-16-9">
+            <iframe src="https://www.youtube.com/embed/4kxU0sW22ow?si=wjWRHhy-8qg6Xozc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="video-overlay">
+              <h3>공모전 '헌혈시티 2'</h3>
+              <p class="period">작업 기간: 2026.03 ~ 4.20 </p>
+              <p>팀 프로젝트 AI 활용 참여</p>
+            </div>
           </div>
         </div>
 
-        <div class="video-box">
-          <iframe src="https://www.youtube.com/embed/A6_t9to2NeY?si=V0QLzClPeC71wVTj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          <div class="video-overlay">
-            <h3>Wedding editing</h3>
-            <p class="period">작업 기간: 2026.03.09 ~ 3.16</p>
-            <p>컷 편집 / 색보정 </p>
+        <!-- 프로젝트 3 -->
+        <div class="project-item">
+          <div class="video-box ratio-16-9">
+            <iframe src="https://www.youtube.com/embed/A6_t9to2NeY?si=V0QLzClPeC71wVTj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="video-overlay">
+              <h3>Wedding editing</h3>
+              <p class="period">작업 기간: 2026.03.09 ~ 3.16</p>
+              <p>컷 편집 / 색보정 </p>
+            </div>
           </div>
         </div>
 
-        <div class="video-box">
-          <iframe src="https://www.youtube.com/embed/avBChfhBCko" title="moving poster - Victoria Swedish Egg White Facial Soap" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          <div class="video-overlay">
-            <h3>무빙 포스터 제작</h3>
-            <p class="period">작업 기간: 2026.05.13</p>
-            <p>Victoria Soap</p>
+        <!-- 프로젝트 4 -->
+        <div class="project-item">
+          <div class="video-box ratio-16-9">
+            <iframe src="https://www.youtube.com/embed/avBChfhBCko" title="moving poster - Victoria Swedish Egg White Facial Soap" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="video-overlay">
+              <h3>무빙 포스터 제작</h3>
+              <p class="period">작업 기간: 2026.05.13</p>
+              <p>Victoria Soap</p>
+            </div>
           </div>
         </div>   
 
@@ -292,12 +346,13 @@
       <!-- 탭 콘텐츠 전체 구역 -->
       <div class="tab-content-container">
         
-        <!-- 1. 쇼츠 비디오 탭 콘텐츠 (네모 반듯 + 오버레이 적용) -->
+        <!-- 1. 쇼츠 비디오 탭 콘텐츠 (세로 비율 ratio-9-16 적용) -->
         <div id="tab-shorts" class="tab-content active">
           <div class="swiper iframevideo">
             <div class="swiper-wrapper">
+              
               <div class="swiper-slide">
-                <div class="video-box">
+                <div class="video-box ratio-9-16">
                   <iframe src="https://www.youtube.com/embed/kKS3HHyVhlg" title="summer look" frameborder="0" allowfullscreen></iframe>
                   <div class="video-overlay">
                     <h3>Summer Look</h3>
@@ -306,8 +361,33 @@
                   </div>
                 </div>
               </div>
+
               <div class="swiper-slide">
-                <div class="video-box">
+                <div class="video-box ratio-9-16">
+                  <!-- ※ 대구뭐하노_영상ID 부분을 실제 인스타그램 릴스 고유 ID로 채워주세요 -->
+                  <iframe src="https://www.instagram.com/reels/대구뭐하노_영상ID/embed/" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+                  <div class="video-overlay">
+                    <h3>지역 채널 '대구 뭐하노'</h3>
+                    <p class="period">인스타그램 릴스 운영</p>
+                    <p>콘텐츠 기획 및 숏폼 편집</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="video-box ratio-9-16">
+                  <!-- ※ 푸르딩딩_영상ID 부분을 실제 인스타그램 릴스 고유 ID로 채워주세요 -->
+                  <iframe src="https://www.instagram.com/reels/푸르딩딩_영상ID/embed/" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+                  <div class="video-overlay">
+                    <h3>반려견 채널 '푸르딩딩'</h3>
+                    <p class="period">현재 운영 중</p>
+                    <p>반려견 일상 브이로그 숏츠</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="video-box ratio-9-16">
                   <iframe src="https://www.youtube.com/embed/6ELXnNJ24jo" title="ootd" frameborder="0" allowfullscreen></iframe>
                   <div class="video-overlay">
                     <h3>OOTD Shorts</h3>
@@ -316,28 +396,19 @@
                   </div>
                 </div>
               </div>
-              <div class="swiper-slide">
-                <div class="video-box">
-                  <iframe src="https://www.youtube.com/embed/NjN8M60Z6VM" title="denim look" frameborder="0" allowfullscreen></iframe>
-                  <div class="video-overlay">
-                    <h3>Denim Look</h3>
-                    <p class="period">작업 기간: 2026.04</p>
-                    <p>데님 에디션 바이럴 영상</p>
-                  </div>
-                </div>
-              </div>
+
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
           </div>
         </div>
 
-        <!-- 2. 롱폼 비디오 탭 콘텐츠 (마크업 완전 수리 + 네모 반듯 + 오버레이 적용) -->
+        <!-- 2. 롱폼 비디오 탭 콘텐츠 (가로 비율 ratio-16-9 적용) -->
         <div id="tab-longform" class="tab-content">
           <div class="swiper iframevideo">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
-                <div class="video-box">
+                <div class="video-box ratio-16-9">
                   <iframe src="https://www.youtube.com/embed/Pba0fuo2HkY?si=v6FaWMPyRkpJO1Or" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
                   <div class="video-overlay">
                     <h3>Long-form Project 1</h3>
@@ -347,7 +418,7 @@
                 </div>
               </div>
               <div class="swiper-slide">
-                <div class="video-box">
+                <div class="video-box ratio-16-9">
                   <iframe src="https://www.youtube.com/embed/XxD_Pj5W7h0?si=sIdyxA9xFP0ZPOPa" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
                   <div class="video-overlay">
                     <h3>Long-form Project 2</h3>
@@ -357,7 +428,7 @@
                 </div>
               </div>
               <div class="swiper-slide">
-                <div class="video-box">
+                <div class="video-box ratio-16-9">
                   <iframe src="https://www.youtube.com/embed/B-E1U3B1eYQ?si=CO2gJagpSOte7u2I" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
                   <div class="video-overlay">
                     <h3>Long-form Project 3</h3>
@@ -395,13 +466,38 @@
     <section class="contact">
       <h2>CONTACT</h2>
       <div class="images">
+        <!-- 네이버 메일 -->
         <div class="img1">
-          <img src="images/naver mail.png" alt="mail" width="800" height="800">
-          <p>silverz00@naver.com</p>
+          <a href="mailto:silverz00@naver.com">
+            <img src="images/naver mail.png" alt="mail" width="800" height="800">
+          </a>
+          <p><a href="mailto:silverz00@naver.com" style="color: inherit; text-decoration: none;">silverz00@naver.com</a></p>
         </div>
+        
+        <!-- 인스타그램: 푸르딩딩 (현재 운영) -->
         <div class="img2">
-          <img src="images/Instagram_브라더민-01.png" alt="instagram" width="300" height="300">
-          <p>@silverz000</p>
+          <!-- ※ 실제 인스타 주소에 맞게 href 링크를 변경해주세요 -->
+          <a href="https://www.instagram.com/purudingding_poodle" target="_blank" rel="noopener noreferrer">
+            <img src="images/Instagram_브라더민-01.png" alt="현재 인스타그램 푸르딩딩" width="300" height="300">
+          </a>
+          <p>
+            <a href="https://www.instagram.com/purudingding_poodle" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">
+              <strong>현재 운영</strong><br>@purudingding_poodle (푸르딩딩)
+            </a>
+          </p>
+        </div>
+
+        <!-- 인스타그램: 대구 뭐하노 (과거 운영) -->
+        <div class="img3">
+          <!-- ※ 실제 인스타 주소에 맞게 href 링크를 변경해주세요 -->
+          <a href="https://www.instagram.com/daegu_mohhano" target="_blank" rel="noopener noreferrer">
+            <img src="images/Instagram_브라더민-01.png" alt="과거 인스타그램 대구 뭐하노" width="300" height="300" style="filter: grayscale(30%);">
+          </a>
+          <p>
+            <a href="https://www.instagram.com/daegu_mohhano" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">
+              <strong>지역 채널</strong><br>@daegu_mohhano (대구 뭐하노)
+            </a>
+          </p>
         </div>
       </div>
     </section>
